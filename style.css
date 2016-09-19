@@ -1,8 +1,9 @@
 body {
-  background: beige;
+  background: url(images/background.jpg);
+  background-size: cover;
 }
 
-h1 {
+#nameTitle {
   color: red;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   text-align: center;
@@ -10,16 +11,105 @@ h1 {
   margin: 0;
 }
 
-#box00 {
-/*background: red;*/
+h2 {
+  text-align: center;
+  height: 50%;
+  font-size: 35px;
+  padding-top: 5px;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}
+.tabButton {
+    width: 145px;
+    border: 5px solid black;
+    margin: 0px;
+    padding: 0px;
+    height: 30px;
+    font-size: 15px;
+    color: azure;
+    font-weight: bold;
+    background-color: rgba(100,200,200,0.5);
+}
+#rulesButton {
+float: left;}
 
+#rules {
+  margin-top: 5px; 
+  text-align: left;
+  padding-left: 10px;
+  font-weight: 900;
+  color: azure;
+}
+.rightDiv {
+  width: 290px;
+  height: 285px;
+  border: 5px 0 0 0 solid black;
 }
 
-#top-row {
+#div1 {
+  border-bottom: 10px solid black;
+  height: 275px;
+}
+
+button:focus {outline:0;}
+
+
+#top-left-corner {
+    background-color: rgba(33,101,28,0.62);
+    width: 100px;
+    height: 100px;
+    border: 10px solid black;
+    display: inline-block;
+    float: left;
+    margin-left: 95px;
+}
+
+#top-right-corner {
+    background-color: rgba(33,101,28,0.62);
+    width: 100px;
+    height: 100px;
+    border: 10px solid black;
+    display: inline-block;
+    float: left;
+}
+
+
+#left-column {
+    background-color: rgba(109,20,20,0.73);
+    width: 100px;
+    height: 570px;
+    border: 10px solid black;
+    display: inline-block;
+    float: left;
+}
+
+#right-column {
+    background-color: rgba(109,20,20,0.73);
+    width: 290px;
+    height: 570px;
+    border: 10px solid black;
+    display: inline-block;
+    float: right;
+}
+
+#top-section {
+    margin: 0 auto;
+    width: 1190px;
+    height: 100px;
+}
+
+#top-mid {
   margin: 0 auto;
-  width: 550px;
-  background: yellow;
+  width: 740px;
+  height: 100px;
+  background: rgba(144,144,34,0.78);
   border: 10px solid black;
+  float: left;
+}
+
+#bottom-section {
+    margin: 0 auto;
+    width: 1000px;
+    height: 570px;
 }
 
 #player-row {
@@ -31,8 +121,17 @@ h1 {
   margin-bottom: 0;
   margin-top: 0;
   margin-left: 15px;
-  width: 230px;
+  width: 350px;
   display: inline-block;
+}
+
+#rulesHeader {
+  text-align: center;
+  background-color: grey;
+  margin: 0;
+  height: 30px;
+  vertical-align: middle;
+  padding-top: 8px;
 }
 
 #player2name {
@@ -43,18 +142,32 @@ h1 {
 #name-form {
   display: inline-block;
   padding-right: 170px;
+      width: 390px;
 }
 
 #opponent-form {
   display: inline-block;
+  visibility: hidden;
 }
 
 #gameBoard {
-  margin: 0 auto;
   width: 550px;
   height: 570px;
-  background: #2196f3;
+  background: rgba(20,62,95,0.73);
   border: 10px solid black;
+  display: inline-block;
+}
+
+#enemyGameBoard {
+  width: 290px;
+  height: 285px;
+  background: rgba(20,62,95,0.73);
+/*  border: 10px solid black;
+*/  display: inline-block;
+}
+
+#user-column {
+  transform: rotate(90deg);
 }
 
 .row {
@@ -73,14 +186,34 @@ h1 {
   padding: 0.5px;
   background-color: grey;
   display: inline-block;
+  border-radius: 7px;
 }
-
+.enemy-box {
+  width: 8%;
+  height: 19px;
+  margin: 0px;
+  padding: 0.5px;
+  background-color: grey;
+  display: inline-block;
+  border-radius: 7px;
+}
 .box:hover {
-/*border: 2px solid yellow;
-padding: -2px;*/
-box-shadow:0px 0px 0px 5px yellow inset;
-
+  box-shadow:0px 0px 0px 5px yellow inset;
 }
 
+#enemyFireButton {
+    background-color: rgba(33,101,28,0.62);
+    padding: 10px;
+    font-size: 20px;
+    height: 100px;
+    width: 100px;
+    color: whitesmoke;
+    font-weight: 700;
+    border: 5px solid whitesmoke;
+}
 
+#enemyFireButton:hover {
+  box-shadow:0px 0px 0px 10px red inset;
+  border: 0;
 
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BatteSHIP</title>
+  <title>PirateSHIPS</title>
 
   <link rel="stylesheet" type="text/css" href="style.css">
     <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
@@ -9,146 +9,318 @@
 </head>
 <body>
 
-    <div id="top-row">
-      <form id="name-form">
-        <input id="player-input" type="text" placeholder="Enter your name" required="true" autofocus="true" maxlength="16">
-        <input type="submit">
-      </form>
+ <audio id="loadMusic" src="music/loadMusic.mp3" loop="loop"></audio>
+ <audio id="battleMusic" src="music/battleMusic.mp3" loop="loop"></audio>
+  <audio id="bgSFX" src="music/bgSFX.mp3" loop="loop"></audio>
 
-      <form id="opponent-form">
-        <input id="opponent-input" type="text" placeholder="Enter opponent's name" autofocus="true" required="true" maxlength="16">
-        <input type="submit">
-      </form>
 
-      <h1>BattleSHIPS</h1>
-    <div id="player-row">
-      <h3 id="player1name">Player: </h3>
-      <h3 id="player2name">Opponent: </h3>
+    <div id="top-section">
+        <div id="top-left-corner">
+            <h2 id="userResult"></h2>
+            
+        </div>
+
+         <div id='top-mid'>
+              <form id="name-form">
+                <input id="player-input" type="text" placeholder="Enter your name" required="true" autofocus="true" maxlength="15">
+                <input type="submit">
+              </form>
+
+              <form id="opponent-form">
+                <input id="opponent-input" type="text" placeholder="Enter opponent's name" autofocus="true" required="true" maxlength="15">
+                <input type="submit">
+              </form>
+
+              <h1 id="nameTitle">PirateSHIPS</h1>
+
+            <div id="player-row">
+              <h3 id="player1name">Player: </h3>
+              <h3 id="player2name">Opponent: </h3>
+            </div>
+        </div>
+
+        <div id="top-right-corner">
+            <button id="enemyFireButton">Enemy Fire</button>
+            
+        </div>
+
     </div>
-    </div>
 
-      <div id="gameBoard">
-        <div class="row" id="firstRow">
-            <div class="box" id="box00"></div>
-            <div class="box" id="box01"></div>
-            <div class="box" id="box02"></div>
-            <div class="box" id="box03"></div>
-            <div class="box" id="box04"></div>
-            <div class="box" id="box05"></div>
-            <div class="box" id="box06"></div>
-            <div class="box" id="box07"></div>
-            <div class="box" id="box08"></div>
-            <div class="box" id="box09"></div>
+    <div id="bottom-section">
+        
+        <div id="left-column">
+            <h1 id="user-column"></h1>
+            
         </div>
-        <div class="row">
-            <div class="box" id="box10"></div>
-            <div class="box" id="box11"></div>
-            <div class="box" id="box12"></div>
-            <div class="box" id="box13"></div>
-            <div class="box" id="box14"></div>
-            <div class="box" id="box15"></div>
-            <div class="box" id="box16"></div>
-            <div class="box" id="box17"></div>
-            <div class="box" id="box18"></div>
-            <div class="box" id="box19"></div>
+
+          <div id="gameBoard">
+            <div class="row" id="firstRow">
+                <div class="box" id="box00"></div>
+                <div class="box" id="box01"></div>
+                <div class="box" id="box02"></div>
+                <div class="box" id="box03"></div>
+                <div class="box" id="box04"></div>
+                <div class="box" id="box05"></div>
+                <div class="box" id="box06"></div>
+                <div class="box" id="box07"></div>
+                <div class="box" id="box08"></div>
+                <div class="box" id="box09"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box10"></div>
+                <div class="box" id="box11"></div>
+                <div class="box" id="box12"></div>
+                <div class="box" id="box13"></div>
+                <div class="box" id="box14"></div>
+                <div class="box" id="box15"></div>
+                <div class="box" id="box16"></div>
+                <div class="box" id="box17"></div>
+                <div class="box" id="box18"></div>
+                <div class="box" id="box19"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box20"></div>
+                <div class="box" id="box21"></div>
+                <div class="box" id="box22"></div>
+                <div class="box" id="box23"></div>
+                <div class="box" id="box24"></div>
+                <div class="box" id="box25"></div>
+                <div class="box" id="box26"></div>
+                <div class="box" id="box27"></div>
+                <div class="box" id="box28"></div>
+                <div class="box" id="box29"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box30"></div>
+                <div class="box" id="box31"></div>
+                <div class="box" id="box32"></div>
+                <div class="box" id="box33"></div>
+                <div class="box" id="box34"></div>
+                <div class="box" id="box35"></div>
+                <div class="box" id="box36"></div>
+                <div class="box" id="box37"></div>
+                <div class="box" id="box38"></div>
+                <div class="box" id="box39"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box40"></div>
+                <div class="box" id="box41"></div>
+                <div class="box" id="box42"></div>
+                <div class="box" id="box43"></div>
+                <div class="box" id="box44"></div>
+                <div class="box" id="box45"></div>
+                <div class="box" id="box46"></div>
+                <div class="box" id="box47"></div>
+                <div class="box" id="box48"></div>
+                <div class="box" id="box49"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box50"></div>
+                <div class="box" id="box51"></div>
+                <div class="box" id="box52"></div>
+                <div class="box" id="box53"></div>
+                <div class="box" id="box54"></div>
+                <div class="box" id="box55"></div>
+                <div class="box" id="box56"></div>
+                <div class="box" id="box57"></div>
+                <div class="box" id="box58"></div>
+                <div class="box" id="box59"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box60"></div>
+                <div class="box" id="box61"></div>
+                <div class="box" id="box62"></div>
+                <div class="box" id="box63"></div>
+                <div class="box" id="box64"></div>
+                <div class="box" id="box65"></div>
+                <div class="box" id="box66"></div>
+                <div class="box" id="box67"></div>
+                <div class="box" id="box68"></div>
+                <div class="box" id="box69"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box70"></div>
+                <div class="box" id="box71"></div>
+                <div class="box" id="box72"></div>
+                <div class="box" id="box73"></div>
+                <div class="box" id="box74"></div>
+                <div class="box" id="box75"></div>
+                <div class="box" id="box76"></div>
+                <div class="box" id="box77"></div>
+                <div class="box" id="box78"></div>
+                <div class="box" id="box79"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box80"></div>
+                <div class="box" id="box81"></div>
+                <div class="box" id="box82"></div>
+                <div class="box" id="box83"></div>
+                <div class="box" id="box84"></div>
+                <div class="box" id="box85"></div>
+                <div class="box" id="box86"></div>
+                <div class="box" id="box87"></div>
+                <div class="box" id="box88"></div>
+                <div class="box" id="box89"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box90"></div>
+                <div class="box" id="box91"></div>
+                <div class="box" id="box92"></div>
+                <div class="box" id="box93"></div>
+                <div class="box" id="box94"></div>
+                <div class="box" id="box95"></div>
+                <div class="box" id="box96"></div>
+                <div class="box" id="box97"></div>
+                <div class="box" id="box98"></div>
+                <div class="box" id="box99"></div>
+            </div>
+          </div>
+
+<div id="right-column">
+    <div id="div1" class="rightDiv">
+       <div>
+           <h3 id="rulesHeader">Here Be Th' Rules</h3>
+       </div>
+
+        <p id="rules">
+            - Avast ye! Each player has 28 boxes occupied by a part 'o their fleet's ship. <br>
+            - On your turn, choose a box to target. <br> 
+            A red box gunna indicate that ye hit ye enemy's ship! A blue box means that ye hit nothin' but th' sea on which we sail. <br>
+            - After your turn, hit the 'Enemy Fire' to await your fate. <br>
+            - First scurvy pirate to sink all 28 boxes 'o their enemy fleet won't be spendin' to'morrow... in Davy Jones' Locker... <br>
+             (  ----- Enter your name to begin! -----  )
+        </p>
+
+
+    </div>
+            
+    <div id="div2" class="rightDiv">
+                    
+        <div id="enemyGameBoard">
+            <div class="row" id="firstRow">
+                <div class="enemy-box" id="enemy-box00"></div>
+                <div class="enemy-box" id="enemy-box01"></div>
+                <div class="enemy-box" id="enemy-box02"></div>
+                <div class="enemy-box" id="enemy-box03"></div>
+                <div class="enemy-box" id="enemy-box04"></div>
+                <div class="enemy-box" id="enemy-box05"></div>
+                <div class="enemy-box" id="enemy-box06"></div>
+                <div class="enemy-box" id="enemy-box07"></div>
+                <div class="enemy-box" id="enemy-box08"></div>
+                <div class="enemy-box" id="enemy-box09"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box10"></div>
+                <div class="enemy-box" id="enemy-box11"></div>
+                <div class="enemy-box" id="enemy-box12"></div>
+                <div class="enemy-box" id="enemy-box13"></div>
+                <div class="enemy-box" id="enemy-box14"></div>
+                <div class="enemy-box" id="enemy-box15"></div>
+                <div class="enemy-box" id="enemy-box16"></div>
+                <div class="enemy-box" id="enemy-box17"></div>
+                <div class="enemy-box" id="enemy-box18"></div>
+                <div class="enemy-box" id="enemy-box19"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box20"></div>
+                <div class="enemy-box" id="enemy-box21"></div>
+                <div class="enemy-box" id="enemy-box22"></div>
+                <div class="enemy-box" id="enemy-box23"></div>
+                <div class="enemy-box" id="enemy-box24"></div>
+                <div class="enemy-box" id="enemy-box25"></div>
+                <div class="enemy-box" id="enemy-box26"></div>
+                <div class="enemy-box" id="enemy-box27"></div>
+                <div class="enemy-box" id="enemy-box28"></div>
+                <div class="enemy-box" id="enemy-box29"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box30"></div>
+                <div class="enemy-box" id="enemy-box31"></div>
+                <div class="enemy-box" id="enemy-box32"></div>
+                <div class="enemy-box" id="enemy-box33"></div>
+                <div class="enemy-box" id="enemy-box34"></div>
+                <div class="enemy-box" id="enemy-box35"></div>
+                <div class="enemy-box" id="enemy-box36"></div>
+                <div class="enemy-box" id="enemy-box37"></div>
+                <div class="enemy-box" id="enemy-box38"></div>
+                <div class="enemy-box" id="enemy-box39"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box40"></div>
+                <div class="enemy-box" id="enemy-box41"></div>
+                <div class="enemy-box" id="enemy-box42"></div>
+                <div class="enemy-box" id="enemy-box43"></div>
+                <div class="enemy-box" id="enemy-box44"></div>
+                <div class="enemy-box" id="enemy-box45"></div>
+                <div class="enemy-box" id="enemy-box46"></div>
+                <div class="enemy-box" id="enemy-box47"></div>
+                <div class="enemy-box" id="enemy-box48"></div>
+                <div class="enemy-box" id="enemy-box49"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box50"></div>
+                <div class="enemy-box" id="enemy-box51"></div>
+                <div class="enemy-box" id="enemy-box52"></div>
+                <div class="enemy-box" id="enemy-box53"></div>
+                <div class="enemy-box" id="enemy-box54"></div>
+                <div class="enemy-box" id="enemy-box55"></div>
+                <div class="enemy-box" id="enemy-box56"></div>
+                <div class="enemy-box" id="enemy-box57"></div>
+                <div class="enemy-box" id="enemy-box58"></div>
+                <div class="enemy-box" id="enemy-box59"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box60"></div>
+                <div class="enemy-box" id="enemy-box61"></div>
+                <div class="enemy-box" id="enemy-box62"></div>
+                <div class="enemy-box" id="enemy-box63"></div>
+                <div class="enemy-box" id="enemy-box64"></div>
+                <div class="enemy-box" id="enemy-box65"></div>
+                <div class="enemy-box" id="enemy-box66"></div>
+                <div class="enemy-box" id="enemy-box67"></div>
+                <div class="enemy-box" id="enemy-box68"></div>
+                <div class="enemy-box" id="enemy-box69"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box70"></div>
+                <div class="enemy-box" id="enemy-box71"></div>
+                <div class="enemy-box" id="enemy-box72"></div>
+                <div class="enemy-box" id="enemy-box73"></div>
+                <div class="enemy-box" id="enemy-box74"></div>
+                <div class="enemy-box" id="enemy-box75"></div>
+                <div class="enemy-box" id="enemy-box76"></div>
+                <div class="enemy-box" id="enemy-box77"></div>
+                <div class="enemy-box" id="enemy-box78"></div>
+                <div class="enemy-box" id="enemy-box79"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box80"></div>
+                <div class="enemy-box" id="enemy-box81"></div>
+                <div class="enemy-box" id="enemy-box82"></div>
+                <div class="enemy-box" id="enemy-box83"></div>
+                <div class="enemy-box" id="enemy-box84"></div>
+                <div class="enemy-box" id="enemy-box85"></div>
+                <div class="enemy-box" id="enemy-box86"></div>
+                <div class="enemy-box" id="enemy-box87"></div>
+                <div class="enemy-box" id="enemy-box88"></div>
+                <div class="enemy-box" id="enemy-box89"></div>
+            </div>
+            <div class="row">
+                <div class="enemy-box" id="enemy-box90"></div>
+                <div class="enemy-box" id="enemy-box91"></div>
+                <div class="enemy-box" id="enemy-box92"></div>
+                <div class="enemy-box" id="enemy-box93"></div>
+                <div class="enemy-box" id="enemy-box94"></div>
+                <div class="enemy-box" id="enemy-box95"></div>
+                <div class="enemy-box" id="enemy-box96"></div>
+                <div class="enemy-box" id="enemy-box97"></div>
+                <div class="enemy-box" id="enemy-box98"></div>
+                <div class="enemy-box" id="enemy-box99"></div>
+            </div>
+          </div> 
         </div>
-        <div class="row">
-            <div class="box" id="box20"></div>
-            <div class="box" id="box21"></div>
-            <div class="box" id="box22"></div>
-            <div class="box" id="box23"></div>
-            <div class="box" id="box24"></div>
-            <div class="box" id="box25"></div>
-            <div class="box" id="box26"></div>
-            <div class="box" id="box27"></div>
-            <div class="box" id="box28"></div>
-            <div class="box" id="box29"></div>
-        </div>
-        <div class="row">
-            <div class="box" id="box30"></div>
-            <div class="box" id="box31"></div>
-            <div class="box" id="box32"></div>
-            <div class="box" id="box33"></div>
-            <div class="box" id="box34"></div>
-            <div class="box" id="box35"></div>
-            <div class="box" id="box36"></div>
-            <div class="box" id="box37"></div>
-            <div class="box" id="box38"></div>
-            <div class="box" id="box39"></div>
-        </div>
-        <div class="row">
-            <div class="box" id="box40"></div>
-            <div class="box" id="box41"></div>
-            <div class="box" id="box42"></div>
-            <div class="box" id="box43"></div>
-            <div class="box" id="box44"></div>
-            <div class="box" id="box45"></div>
-            <div class="box" id="box46"></div>
-            <div class="box" id="box47"></div>
-            <div class="box" id="box48"></div>
-            <div class="box" id="box49"></div>
-        </div>
-        <div class="row">
-            <div class="box" id="box50"></div>
-            <div class="box" id="box51"></div>
-            <div class="box" id="box52"></div>
-            <div class="box" id="box53"></div>
-            <div class="box" id="box54"></div>
-            <div class="box" id="box55"></div>
-            <div class="box" id="box56"></div>
-            <div class="box" id="box57"></div>
-            <div class="box" id="box58"></div>
-            <div class="box" id="box59"></div>
-        </div>
-        <div class="row">
-            <div class="box" id="box60"></div>
-            <div class="box" id="box61"></div>
-            <div class="box" id="box62"></div>
-            <div class="box" id="box63"></div>
-            <div class="box" id="box64"></div>
-            <div class="box" id="box65"></div>
-            <div class="box" id="box66"></div>
-            <div class="box" id="box67"></div>
-            <div class="box" id="box68"></div>
-            <div class="box" id="box69"></div>
-        </div>
-        <div class="row">
-            <div class="box" id="box70"></div>
-            <div class="box" id="box71"></div>
-            <div class="box" id="box72"></div>
-            <div class="box" id="box73"></div>
-            <div class="box" id="box74"></div>
-            <div class="box" id="box75"></div>
-            <div class="box" id="box76"></div>
-            <div class="box" id="box77"></div>
-            <div class="box" id="box78"></div>
-            <div class="box" id="box79"></div>
-        </div>
-        <div class="row">
-            <div class="box" id="box80"></div>
-            <div class="box" id="box81"></div>
-            <div class="box" id="box82"></div>
-            <div class="box" id="box83"></div>
-            <div class="box" id="box84"></div>
-            <div class="box" id="box85"></div>
-            <div class="box" id="box86"></div>
-            <div class="box" id="box87"></div>
-            <div class="box" id="box88"></div>
-            <div class="box" id="box89"></div>
-        </div>
-        <div class="row">
-            <div class="box" id="box90"></div>
-            <div class="box" id="box91"></div>
-            <div class="box" id="box92"></div>
-            <div class="box" id="box93"></div>
-            <div class="box" id="box94"></div>
-            <div class="box" id="box95"></div>
-            <div class="box" id="box96"></div>
-            <div class="box" id="box97"></div>
-            <div class="box" id="box98"></div>
-            <div class="box" id="box99"></div>
-        </div>
-      </div>
+    </div>
+</div>
 
 
       <script type="text/javascript" src='script.js' ></script>
