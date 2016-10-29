@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PirateSHIPS</title>
+    <title>PirateSHIPS</title>
 
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
 
 </head>
 <body>
 
- <audio id="loadMusic" src="music/loadMusic.mp3" loop="loop"></audio>
- <audio id="battleMusic" src="music/battleMusic.mp3" loop="loop"></audio>
-  <audio id="bgSFX" src="music/bgSFX.mp3" loop="loop"></audio>
-
+    <audio id="loadMusic" src="music/loadMusic.mp3" loop="loop"></audio>
+    <audio id="battleMusic" src="music/battleMusic.mp3" loop="loop"></audio>
+    <audio id="bgSFX" src="music/bgSFX.mp3" loop="loop"></audio>
 
     <div id="top-section">
         <div id="top-left-corner">
-            <h2 id="userResult"></h2>
-            
+            <h2 id="userResult"></h2>            
         </div>
 
-         <div id='top-mid'>
-              <form id="name-form">
+        <div id='top-mid'>
+            <form id="name-form">
                 <input id="player-input" type="text" placeholder="Enter your name" required="true" autofocus="true" maxlength="15">
                 <input type="submit">
-              </form>
+            </form>
 
-              <form id="opponent-form">
+            <form id="opponent-form">
                 <input id="opponent-input" type="text" placeholder="Enter opponent's name" autofocus="true" required="true" maxlength="15">
                 <input type="submit">
-              </form>
+            </form>
 
-              <h1 id="nameTitle">PirateSHIPS</h1>
+            <h1 id="nameTitle">PirateSHIPS</h1>
 
             <div id="player-row">
               <h3 id="player1name">Player: </h3>
@@ -40,10 +39,8 @@
         </div>
 
         <div id="top-right-corner">
-            <button id="enemyFireButton">Enemy Fire</button>
-            
+            <button id="enemyFireButton">Enemy Fire</button>    
         </div>
-
     </div>
 
     <div id="bottom-section">
