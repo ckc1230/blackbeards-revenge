@@ -2,11 +2,10 @@
 <html>
     <head>
         <title>PirateSHIPS</title>
-
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         <audio id="loadMusic" src="music/loadMusic.mp3" loop="loop"></audio>
@@ -18,21 +17,9 @@
                 <div id="top-left-corner" class="col-md-1">
                     <h2 id="userResult"></h2>            
                 </div>
-
                 <div id="top-mid" class="col-md-10">
-                    <form id="name-form">
-                        <input id="player-input" type="text" placeholder="Enter your name" required="true" autofocus="true" maxlength="15">
-                        <input type="submit">
-                    </form>
-
-                    <form id="opponent-form">
-                        <input id="opponent-input" type="text" placeholder="Enter opponent's name" autofocus="true" required="true" maxlength="15">
-                        <input type="submit">
-                    </form>
-
                     <h1 id="nameTitle">PirateSHIPS</h1>
                 </div>
-
                 <div id="top-right-corner" class="col-md-1">
                     <button id="enemyFireButton">Enemy Fire</button>    
                 </div>
@@ -45,20 +32,76 @@
                 <div id="gameBoard" class="col-md-7 col-centered">
                 </div>
 
-        <div id="right-column" class="col-md-4">
-            <div class="row">
-                <h3 id="rulesHeader">Here Be Th' Rules</h3>
-            </div>
-            <div id="scoreBoard" class="row">
-               <div id="player-row">
-                      <h3 id="player1name">Player: </h3>
-                      <h3 id="player2name">Opponent: </h3>
+                <div id="right-column" class="col-md-4">
+                <div id="game-board" style="display: none">
+                    <div class="row">
+                        <h3 id="scoreHeader">Scoreboard</h3>
+                    </div>
+                    <div id="scoreBoard" class="row">
+                       <div id="player-row">
+                            <h3 id="player1name">Player: </h3>
+                            <h3 id="player2name">Blackbeard: </h3>
+                        </div>
+                    </div>
                 </div>
-            </div>        
-            <div id="enemyGameBoard" class="row">
+                    <div class="row" id="pre-game-board">
+                        <button id="pre-game-button" class="btn btn-warning btn-lg form-control" data-target="#myModal" data-toggle="modal" >Board Ye Ship!</button>
+                        <div id="pre-game-image">
+                        </div>
+                    </div>
+
+
+
+                    <div id="enemyGameBoard" class="row">
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+        <!-- MODAL -->
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialogue col-md-5">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Here be thee Rules:</h3>
+                    </div>
+                    <div class="modal-body">
+                    <ul>
+                        <li>
+                            <p>Avast ye! Each player has 28 boxes occupied by a part 'o their fleet's ship.</p>
+                        </li>
+                        <li>
+                            <p>On your turn, choose a box to target.</p>
+                        </li>
+                        <li>
+                            <p>A red box gunna indicate that ye hit ye enemy's ship! A blue box means that ye hit nothin' but th' sea on which we sail.</p>
+                        </li>
+                        <li>
+                            <p>After your turn, hit the 'Enemy Fire' to await your fate.</p>
+                        </li>
+                        <li>
+                            <p>First scurvy pirate to sink all 28 boxes 'o their enemy fleet won't be spendin' to'morrow...
+                            <strong>in Davy Jones' Locker...</strong></p>
+                        </li>
+                    </ul>
+
+
+                    </div>
+                   <div class="modal-footer">
+                        <form id="name-form" class="form-inline">
+                            <div class="form-group">
+                                <label>Enter your name to begin: </label>
+                                <input id="player-input" type="text" required="true" class="form-control" maxlength="15">
+                                <input type="submit" value="Begin Battle!" class="btn btn-success">
+                            </div>
+                        </form>
+                    </div>
+                </div>    
             </div>
         </div>
-    </div>
+
+
     <script type="text/javascript" src='script.js' ></script>
     </body>
 </html>
