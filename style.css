@@ -29,18 +29,14 @@ h2 {
     font-weight: bold;
     background-color: rgba(100,200,200,0.5);
 }
-#rulesButton {
-float: left;}
 
-#rules {
-  margin-top: 5px; 
+#scoreBoard {
   text-align: left;
-  padding-left: 10px;
   font-weight: 900;
+  height: 250px;
   color: azure;
 }
 .rightDiv {
-  width: 290px;
   height: 285px;
   border: 5px 0 0 0 solid black;
 }
@@ -52,63 +48,45 @@ float: left;}
 
 button:focus {outline:0;}
 
-
 #top-left-corner {
     background-color: rgba(33,101,28,0.62);
-    width: 100px;
     height: 100px;
     border: 10px solid black;
-    display: inline-block;
-    float: left;
-    margin-left: 95px;
+}
+
+#top-mid {
+  height: 100px;
+  background: rgba(144,144,34,0.78);
+  border: 10px solid black;
 }
 
 #top-right-corner {
     background-color: rgba(33,101,28,0.62);
-    width: 100px;
     height: 100px;
     border: 10px solid black;
-    display: inline-block;
-    float: left;
+    padding: 0px;
 }
 
 
 #left-column {
     background-color: rgba(109,20,20,0.73);
-    width: 100px;
     height: 570px;
     border: 10px solid black;
-    display: inline-block;
-    float: left;
+}
+
+#gameBoard {
+  height: 570px;
+  background: rgba(20,62,95,0.73);
+  border: 10px solid black;
 }
 
 #right-column {
     background-color: rgba(109,20,20,0.73);
-    width: 290px;
     height: 570px;
     border: 10px solid black;
-    display: inline-block;
-    float: right;
-}
-
-#top-section {
-    margin: 0 auto;
-    width: 1190px;
-    height: 100px;
-}
-
-#top-mid {
-  margin: 0 auto;
-  width: 740px;
-  height: 100px;
-  background: rgba(144,144,34,0.78);
-  border: 10px solid black;
-  float: left;
 }
 
 #bottom-section {
-    margin: 0 auto;
-    width: 1000px;
     height: 570px;
 }
 
@@ -150,28 +128,17 @@ button:focus {outline:0;}
   visibility: hidden;
 }
 
-#gameBoard {
-  width: 550px;
-  height: 570px;
+#enemyGameBoard {
+  height: 270px;
   background: rgba(20,62,95,0.73);
   border: 10px solid black;
-  display: inline-block;
-}
-
-#enemyGameBoard {
-  width: 290px;
-  height: 285px;
-  background: rgba(20,62,95,0.73);
-/*  border: 10px solid black;
-*/  display: inline-block;
 }
 
 #user-column {
   transform: rotate(90deg);
 }
 
-.row {
-
+.battleRow {
   padding: 3px 0 0 7px;
 }
 
@@ -180,9 +147,9 @@ button:focus {outline:0;}
 }
 
 .box {
-  width: 9%;
+  width: 8%;
   height: 48px;
-  margin: 0px;
+  margin: 2px 0px 0px 10px;
   padding: 0.5px;
   background-color: grey;
   display: inline-block;
@@ -203,17 +170,14 @@ button:focus {outline:0;}
 
 #enemyFireButton {
     background-color: rgba(33,101,28,0.62);
-    padding: 10px;
-    font-size: 20px;
-    height: 100px;
-    width: 100px;
+    font-size: 16px;
+    height: 80px;
     color: whitesmoke;
-    font-weight: 700;
+    font-weight: 600;
     border: 5px solid whitesmoke;
 }
 
 #enemyFireButton:hover {
   box-shadow:0px 0px 0px 10px red inset;
   border: 0;
-
 }

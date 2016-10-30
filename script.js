@@ -49,7 +49,41 @@ var youLose = new Audio('music/youLose.mp3');
 window.onload = function() {
     loadMusic.play();
     boatSFX.play();
+    createBoard();
+    createEnemyBoard();
 }
+
+function createBoard() {
+  for(var i = 0; i<10; i++) {
+    var newRow = document.createElement("div");
+    newRow.className = "row";
+    document.getElementById("gameBoard").appendChild(newRow);
+    for (var j=0; j<10; j++) {
+      var newBox = document.createElement("div");
+      newBox.className = "box"
+      newBox.id = "box" + i + j
+      newRow.appendChild(newBox)
+    }
+  }
+}
+
+function createEnemyBoard() {
+  for(var i = 0; i<10; i++) {
+    var newEnemyRow = document.createElement("div");
+    newEnemyRow.className = "row";
+    document.getElementById("enemyGameBoard").appendChild(newEnemyRow);
+    for (var j=0; j<10; j++) {
+      var newEnemyBox = document.createElement("div");
+      newEnemyBox.className = "enemy-box"
+      newEnemyBox.id = "enemy-box" + i + j
+      newEnemyRow.appendChild(newEnemyBox)
+    }
+  }
+}
+
+
+
+
 
 
 $('#name-form').on("submit", submitName);
@@ -62,8 +96,6 @@ $('#enemyFireButton').off('click', enemyFire);
 function checkHit() {
   var tempBox = $(this).attr('id');
   var boxNumber = tempBox[3]+tempBox[4];
-  // console.log($(this).attr('id'));
-  // console.log(boxNumber);
 
   var x = boxNumber[0];
   var y = boxNumber[1];
@@ -89,7 +121,6 @@ function checkHit() {
         $(this).css('backgroundColor', 'rgba(0,0,0,0)');  
         $(this).css('box-shadow', '0px 0px 0px 5px black inset');
         $('#player2name').html("Opponent: " + enemy.name + " (" + enemy.ships + " ships left...)");
-         // console.log('miss...'); 
          $('#userResult').html("MISS");
          fireMiss.play();
    }
@@ -101,9 +132,7 @@ function enemyFire() {
     var b = Math.floor(Math.random()*10);
     var enemyAttacks = a.toString() + b.toString();
 
-    // console.log(enemyAttacks);
     var tempBox1 = "#enemy-box" + enemyAttacks;
-    // console.log(tempBox1);
 
     var tempBox = $(tempBox1);
     // console.log(tempBox);
@@ -114,7 +143,6 @@ function enemyFire() {
 
 
     if (userBoard[a][b] != null) {
-        // console.log("You've been HIT!");
         tempBox.css('backgroundColor', 'rgba(109,20,20,0.73)');
         user.ships--;
          $('#userResult').html("HIT");
@@ -124,7 +152,6 @@ function enemyFire() {
        }  
        else {
          $('#player1name').html("Player: " + user.name + " (" + user.ships + " ships left...)");
-        // console.log('Enemy missed'); 
         enemyMiss.play();
         tempBox.css('backgroundColor', 'rgba(0,0,0,0)');  
         $('#userResult').html("MISS");
@@ -171,41 +198,3 @@ function checkWin() {
       youLose.play();
   }
 }
-
-// function toNumber(letter) {
-//   switch(letter) {
-//     case 'a' || 'A':
-//       return 0;
-//       break;
-//     case 'b' || 'B':
-//       return 1;
-//       break;
-//     case 'c' || 'C':
-//       return 2;
-//       break;
-//     case 'd' || 'D':
-//       return 3;
-//       break;
-//     case 'e' || 'E':
-//       return 4;
-//       break;
-//     case 'f' || 'F':
-//       return 5;
-//       break;
-//     case 'g' || 'G':
-//       return 6;
-//       break;
-//     case 'h' || 'H':
-//       return 7;
-//       break;
-//     case 'i' || 'I':
-//       return 8;
-//       break;
-//     case 'j' || 'J':
-//       return 9;
-//       break;
-//     default:
-//       console.log("Uh oh. Invalid Input.");
-//       break;
-//   }
-// }
