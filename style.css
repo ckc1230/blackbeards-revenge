@@ -3,21 +3,28 @@ body {
   background-size: cover;
 }
 
+button:focus {outline:0;}
+
 #nameTitle {
-  color: red;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: black;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
   text-align: center;
   font-size: 3em;
   vertical-align: middle;
 }
 
-#userResult {
-  text-align: center;
-  height: 50%;
-  font-size: 35px;
-  padding-top: 5px;
-  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+#modal-title {
+  padding-left: 25px;
 }
+
+#myModal {
+  top: 15%;
+
+}
+
+.userHit {
+}
+
 .tabButton {
   width: 145px;
   border: 5px solid black;
@@ -59,12 +66,15 @@ body {
   height: 275px;
 }
 
-button:focus {outline:0;}
-
 #top-left-corner {
   background-color: rgba(33,101,28,0.62);
+  padding: 0;
   height: 100px;
   border: 10px solid black;
+}
+
+#userHitResult {
+  height: 80px;
 }
 
 #top-mid {

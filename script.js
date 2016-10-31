@@ -44,6 +44,15 @@ var enemyMiss = new Audio('music/enemyMiss.mp3');
 var youWin = new Audio('music/youWin.mp3');
 var youLose = new Audio('music/youLose.mp3');
 
+// Gameplay Variables
+var dualShot = true;
+var firstDualShot = true;
+var enemyChoiceArray = [];
+
+//Gameplay Event Listeners
+$('#name-form').on("submit", submitName);
+$('.box').off('click', checkHit);
+
 window.onload = function() {
     loadMusic.play();
     boatSFX.play();
@@ -112,17 +121,12 @@ function createScoreBoard() {
   }
 }
 
-var enemyChoiceArray = [];
 function createEnemyChoices() {
   for (var i=0; i<100; i++) {
     var myNumber = ("0" + i).slice(-2);
     enemyChoiceArray.push(myNumber);
   }
 }
-
-
-$('#name-form').on("submit", submitName);
-$('.box').off('click', checkHit);
 
 function checkHit() {
   var tempBox = $(this).attr('id');
@@ -137,7 +141,7 @@ function checkHit() {
   if (enemyBoard[x][y] != null) {
     $(this).css('backgroundColor', 'rgba(109,20,20,0.73)');
     $(this).css('box-shadow', '0px 0px 0px 5px white inset');
-    $('#userResult').html("HIT");
+    $('#userHitResult').attr('src', 'images/hit.png');
     enemyPointId = "#enemyPoint-" + enemy.ships;
     $(enemyPointId).css("background", "url()");
     enemy.ships--;
@@ -146,46 +150,33 @@ function checkHit() {
   } else {
     $(this).css('backgroundColor', 'rgba(0,0,0,0)');  
     $(this).css('box-shadow', '0px 0px 0px 5px black inset');
-    $('#userResult').html("MISS");
+    $('#userHitResult').attr('src', 'images/miss.png');
     fireMiss.play();
   }
   setTimeout(enemyFire, 3700);
 }
 
 function enemyFire() {
-  var choice;
-  var a;
-  var b;
-  for (var i = 0; i<20; i++) {
-    randomNumber = Math.floor(Math.random()*enemyChoiceArray.length);
-    choice = enemyChoiceArray[randomNumber];
-    console.log("choice: " + choice);
-    choice = ("0" + choice).slice(-2).toString();
-    a = choice[0];
-    b = choice[1];
-    var tempBox1 = "#enemy-box" + choice;
-    enemyChoiceArray.splice(enemyChoiceArray.indexOf(choice), 1);
-    var tempBox = $(tempBox1);
-    if (userBoard[a][b] != null) {
-      tempBox.css('backgroundColor', 'rgba(109,20,20,0.73)');
-      playerPointId = '#playerPoint-'+user.ships;
-      console.log(playerPointId);
-      $(playerPointId).css("background", "url()");
-      $('#userResult').html("HIT");
-      user.ships--;
-      enemyHit.play();
-      checkWin();
-    } else {
-      enemyMiss.play();
-      tempBox.css('backgroundColor', 'rgba(0,0,0,0)');  
-      $('#userResult').html("MISS");
+  if (dualShot) {
+    for (var i = 0; i<2; i++) {
+      enemyShot();
     }
-    console.log(enemyChoiceArray.length)
+    if (firstDualShot) {
+      firstDualShot = !firstDualShot;
+    } else {
+      dualShot = !dualShot;
+      firstDualShot = !firstDualShot;
+      }
+    } else {
+    enemyShot();
+    dualShot = !dualShot;
   }
+  
   $('#player1name').css('text-shadow', '0 0 10px white');
   $('#player2name').css('text-shadow', 'none');
   $('#enemyFireButton').removeClass('beforeShot');
   $('#enemyFireButton').addClass('afterShot');
+  $('#userHitResult').attr('src', 'images/enemy.png');
   setTimeout( function() { 
     $('#enemyFireButton').removeClass('afterShot');
     $('#enemyFireButton').addClass('beforeShot');
@@ -193,6 +184,33 @@ function enemyFire() {
       $('.box').on('click', checkHit);
     }
   }, 2000);  
+}
+
+function enemyShot() {
+  var choice;
+  var a;
+  var b;
+  randomNumber = Math.floor(Math.random()*enemyChoiceArray.length);
+  choice = enemyChoiceArray[randomNumber];
+  choice = ("0" + choice).slice(-2).toString();
+  a = choice[0];
+  b = choice[1];
+  var tempBox1 = "#enemy-box" + choice;
+  enemyChoiceArray.splice(enemyChoiceArray.indexOf(choice), 1);
+  var tempBox = $(tempBox1);
+  if (userBoard[a][b] != null) {
+    tempBox.css('backgroundColor', 'rgba(109,20,20,0.73)');
+    playerPointId = '#playerPoint-'+user.ships;
+    $(playerPointId).css("background", "url()");
+    $('#userResult').html("HIT");
+    user.ships--;
+    enemyHit.play();
+    checkWin();
+  } else {
+    enemyMiss.play();
+    tempBox.css('backgroundColor', 'rgba(0,0,0,0)');  
+    $('#userResult').html("MISS");
+  }
 }
 
 function submitName() {
@@ -216,6 +234,7 @@ function checkWin() {
     $('#nameTitle').html(user.name + " wins!")
     battleMusic.pause();
     youWin.play();
+    gameOn = false;
   } else if (user.ships === 0) {
     $('.box').off('click', checkHit);
     $('#nameTitle').html(user.name + " loses...")

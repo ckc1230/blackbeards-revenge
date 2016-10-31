@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PirateSHIPS</title>
+        <title>Blackbeard's Revenge</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
@@ -14,11 +14,11 @@
 
         <div class="container">
             <div class="row">
-                <div id="top-left-corner" class="col-md-1">
-                    <h2 id="userResult"></h2>            
+                <div id="top-left-corner" class="col-md-1 userHit">
+                    <img src="images/begin.png" id="userHitResult">
                 </div>
                 <div id="top-mid" class="col-md-10">
-                    <h1 id="nameTitle">PirateSHIPS</h1>
+                    <h1 id="nameTitle">Blackbeard's Revenge</h1>
                 </div>
                 <div id="top-right-corner" class="col-md-1">
                     <div id="enemyFireButton" class="beforeShot">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                     <div class="row" id="pre-game-board">
-                        <button id="pre-game-button" class="btn btn-warning btn-lg form-control" data-target="#myModal" data-toggle="modal" >Board Ye Ship!</button>
+                        <button id="pre-game-button" class="btn btn-warning btn-lg form-control" data-target="#myModal" data-toggle="modal" >Click Here to Prepare fer Battle!</button>
                         <div id="pre-game-image">
                         </div>
                     </div>
@@ -66,31 +66,30 @@
         <!-- MODAL -->
 
         <div class="modal fade" id="myModal">
-            <div class="modal-dialogue col-md-5">
+            <div class="modal-dialogue col-md-5 col-md-offset-2">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3>Avast ye!</h3>
+                        <h3 id="modal-title">Avast ye!</h3>
                     </div>
                     <div class="modal-body">
-                    <ul>
-                        <li>
-                            <p>Ye're under attack! 'tis th' infamous scurvy pirate lord, Blackbeard.</p>
-                        </li>
-                        <li>
-                            <p> Ye each have 28 boxes occupied by a part 'o ye fleet.</p>
-                        </li>
-                        <li>
-                            <p>On ye turn, choose a box to target. A red box gunna indicate that ye hit ye enemy's ship! A blue box means that ye hit nothin' but th' sea on which we sail.</p>
-                        </li>
-                        <li>
-                            <p>After ye turn, Blackbeard gunna fire back while ye await ye fate.</p>
-                        </li>
-                        <li>
-                            <p>First scurvy pirate to sink all 28 boxes 'o their enemy fleet won't be spendin' to'morrow...
-                            <strong>in Davy Jones' Locker!</strong></p>
-                        </li>
-                    </ul>
-
+                        <ul>
+                            <li>
+                                <p>Ye're under attack! 'tis th' infamous scurvy pirate lord, <strong>Blackbeard</strong>.</p>
+                            </li>
+                            <li>
+                                <p> Ye each have 28 boxes occupied by a part 'o ye fleet.</p>
+                            </li>
+                            <li>
+                                <p>On ye turn, choose a box to target. A red box gunna indicate that ye hit Blackbeard's ship! A blue box means that ye hit nothin' but th' sea on which we sail.</p>
+                            </li>
+                            <li>
+                                <p>After ye turn, Blackbeard gunna fire back with his <strong>dual cannons</strong> - though I hear one be occasionally faulty...</p>
+                            </li>
+                            <li>
+                                <p>First scurvy pirate to sink all 28 boxes 'o their enemy fleet won't be spendin' to'morrow...
+                                <strong>in Davy Jones' Locker!</strong></p>
+                            </li>
+                        </ul>
                     </div>
                    <div class="modal-footer">
                         <form id="name-form" class="form-inline">
@@ -98,7 +97,7 @@
                                 <label>Enter your name: </label>
                                 <input id="player-input" type="text" required="true" class="form-control" maxlength="15">
                             </div>
-                                <input type="submit" value="Begin Battle!" class="btn btn-danger form-control">
+                                <input type="submit" value="Cannons Away!" class="btn btn-danger form-control">
                         </form>
                     </div>
                 </div>    
