@@ -51,6 +51,7 @@ window.onload = function() {
     createEnemyBoard();
     arrangeEnemyBoard();
     createScoreBoard();
+    createEnemyChoices();
 }
 
 function createBoard() {
@@ -107,11 +108,17 @@ function createScoreBoard() {
     var enemyPoint = document.createElement("div");
     enemyPoint.className = "enemyPoint";
     enemyPoint.id = "enemyPoint-" + (i + 1);
-    console.log(enemyPoint.id)
     document.getElementById("enemy-score").appendChild(enemyPoint);
   }
 }
 
+var enemyChoiceArray = [];
+function createEnemyChoices() {
+  for (var i=0; i<100; i++) {
+    var myNumber = ("0" + i).slice(-2);
+    enemyChoiceArray.push(myNumber);
+  }
+}
 
 
 $('#name-form').on("submit", submitName);
@@ -127,57 +134,65 @@ function checkHit() {
   $('#player1name').css('text-shadow', 'none');
   $('#player2name').css('text-shadow', '0 0 10px white');
 
-  if(enemyBoard[x]) {
-    if (enemyBoard[x][y] != null) {
-      $(this).css('backgroundColor', 'rgba(109,20,20,0.73)');
-      $(this).css('box-shadow', '0px 0px 0px 5px white inset');
-      $('#userResult').html("HIT");
-      enemyPointId = "#enemyPoint-" + enemy.ships;
-      $(enemyPointId).css("background", "url()");
-      enemy.ships--;
-
-      checkWin();
-      fireHit.play();
-    } else {
-      $(this).css('backgroundColor', 'rgba(0,0,0,0)');  
-      $(this).css('box-shadow', '0px 0px 0px 5px black inset');
-      $('#userResult').html("MISS");
-      fireMiss.play();
-    }
+  if (enemyBoard[x][y] != null) {
+    $(this).css('backgroundColor', 'rgba(109,20,20,0.73)');
+    $(this).css('box-shadow', '0px 0px 0px 5px white inset');
+    $('#userResult').html("HIT");
+    enemyPointId = "#enemyPoint-" + enemy.ships;
+    $(enemyPointId).css("background", "url()");
+    enemy.ships--;
+    checkWin();
+    fireHit.play();
+  } else {
+    $(this).css('backgroundColor', 'rgba(0,0,0,0)');  
+    $(this).css('box-shadow', '0px 0px 0px 5px black inset');
+    $('#userResult').html("MISS");
+    fireMiss.play();
   }
   setTimeout(enemyFire, 3700);
 }
 
 function enemyFire() {
-  var a = Math.floor(Math.random()*10);
-  var b = Math.floor(Math.random()*10);
-  var enemyAttacks = a.toString() + b.toString();
-  var tempBox1 = "#enemy-box" + enemyAttacks;
-  var tempBox = $(tempBox1);
-
+  var choice;
+  var a;
+  var b;
+  for (var i = 0; i<20; i++) {
+    randomNumber = Math.floor(Math.random()*enemyChoiceArray.length);
+    choice = enemyChoiceArray[randomNumber];
+    console.log("choice: " + choice);
+    choice = ("0" + choice).slice(-2).toString();
+    a = choice[0];
+    b = choice[1];
+    var tempBox1 = "#enemy-box" + choice;
+    enemyChoiceArray.splice(enemyChoiceArray.indexOf(choice), 1);
+    var tempBox = $(tempBox1);
+    if (userBoard[a][b] != null) {
+      tempBox.css('backgroundColor', 'rgba(109,20,20,0.73)');
+      playerPointId = '#playerPoint-'+user.ships;
+      console.log(playerPointId);
+      $(playerPointId).css("background", "url()");
+      $('#userResult').html("HIT");
+      user.ships--;
+      enemyHit.play();
+      checkWin();
+    } else {
+      enemyMiss.play();
+      tempBox.css('backgroundColor', 'rgba(0,0,0,0)');  
+      $('#userResult').html("MISS");
+    }
+    console.log(enemyChoiceArray.length)
+  }
   $('#player1name').css('text-shadow', '0 0 10px white');
   $('#player2name').css('text-shadow', 'none');
   $('#enemyFireButton').removeClass('beforeShot');
   $('#enemyFireButton').addClass('afterShot');
-  if (userBoard[a][b] != null) {
-    tempBox.css('backgroundColor', 'rgba(109,20,20,0.73)');
-    playerPointId = '#playerPoint-'+user.ships;
-    console.log(playerPointId);
-    $(playerPointId).css("background", "url()");
-    $('#userResult').html("HIT");
-    user.ships--;
-    enemyHit.play();
-    checkWin();
-  } else {
-    enemyMiss.play();
-    tempBox.css('backgroundColor', 'rgba(0,0,0,0)');  
-    $('#userResult').html("MISS");
-  }
   setTimeout( function() { 
     $('#enemyFireButton').removeClass('afterShot');
     $('#enemyFireButton').addClass('beforeShot');
-    $('.box').on('click', checkHit);
-  }, 2500);
+    if (gameOn === true) {
+      $('.box').on('click', checkHit);
+    }
+  }, 2000);  
 }
 
 function submitName() {
@@ -197,14 +212,15 @@ function submitName() {
 
 function checkWin() {
   if (enemy.ships === 0) {
-    $('#nameTitle').html(user.name + " wins!")
     $('.box').off('click', checkHit);
+    $('#nameTitle').html(user.name + " wins!")
     battleMusic.pause();
     youWin.play();
   } else if (user.ships === 0) {
-    $('#nameTitle').html(user.name + " loses...")
     $('.box').off('click', checkHit);
+    $('#nameTitle').html(user.name + " loses...")
     battleMusic.pause();
     youLose.play();
+    gameOn = false;
   }
 }
