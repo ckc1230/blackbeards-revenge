@@ -31,7 +31,6 @@ enemyBoard = [[null, 'bs', 'bs', 'bs', null, null, null, null, null, null,],
               [null, null, null, null, null, null, null, null, null, null],
               ['bs', 'bs', 'bs', 'bs', null, null, null, null, null, null]];
 
-
 // MUS variables
 var battleMusic = document.getElementById("battleMusic");
 var loadMusic = document.getElementById("loadMusic");
@@ -45,13 +44,13 @@ var enemyMiss = new Audio('music/enemyMiss.mp3');
 var youWin = new Audio('music/youWin.mp3');
 var youLose = new Audio('music/youLose.mp3');
 
-
 window.onload = function() {
     loadMusic.play();
     boatSFX.play();
     createBoard();
     createEnemyBoard();
     arrangeEnemyBoard();
+    createScoreBoard();
 }
 
 function createBoard() {
@@ -97,10 +96,26 @@ function transposeBoard(a) {
   });
 }
 
+function createScoreBoard() {
+  for (var i = 0; i < 28; i++) {
+    var playerPoint = document.createElement("div");
+    playerPoint.className = "playerPoint";
+    playerPoint.id = "playerPoint-" + (i + 1);
+    document.getElementById("player-score").appendChild(playerPoint);
+  }  
+  for (var i = 0; i < 28; i++) {
+    var enemyPoint = document.createElement("div");
+    enemyPoint.className = "enemyPoint";
+    enemyPoint.id = "enemyPoint-" + (i + 1);
+    console.log(enemyPoint.id)
+    document.getElementById("enemy-score").appendChild(enemyPoint);
+  }
+}
+
+
+
 $('#name-form').on("submit", submitName);
 $('.box').off('click', checkHit);
-$('#enemyFireButton').off('click', enemyFire);
-
 
 function checkHit() {
   var tempBox = $(this).attr('id');
@@ -109,31 +124,28 @@ function checkHit() {
   var x = boxNumber[0];
   var y = boxNumber[1];
   $('.box').off('click', checkHit);
-  $('#enemyFireButton').on('click', enemyFire);
   $('#player1name').css('text-shadow', 'none');
   $('#player2name').css('text-shadow', '0 0 10px white');
 
-
   if(enemyBoard[x]) {
-
     if (enemyBoard[x][y] != null) {
       $(this).css('backgroundColor', 'rgba(109,20,20,0.73)');
       $(this).css('box-shadow', '0px 0px 0px 5px white inset');
-      // console.log('HIT!');
       $('#userResult').html("HIT");
+      enemyPointId = "#enemyPoint-" + enemy.ships;
+      $(enemyPointId).css("background", "url()");
       enemy.ships--;
-      $('#player2name').html(enemy.name + " (" + enemy.ships + " ships left...)");
+
       checkWin();
       fireHit.play();
-     }  
-     else {
-        $(this).css('backgroundColor', 'rgba(0,0,0,0)');  
-        $(this).css('box-shadow', '0px 0px 0px 5px black inset');
-        $('#player2name').html(enemy.name + " (" + enemy.ships + " ships left...)");
-        $('#userResult').html("MISS");
-        fireMiss.play();
-   }
+    } else {
+      $(this).css('backgroundColor', 'rgba(0,0,0,0)');  
+      $(this).css('box-shadow', '0px 0px 0px 5px black inset');
+      $('#userResult').html("MISS");
+      fireMiss.play();
+    }
   }
+  setTimeout(enemyFire, 3700);
 }
 
 function enemyFire() {
@@ -142,34 +154,38 @@ function enemyFire() {
   var enemyAttacks = a.toString() + b.toString();
   var tempBox1 = "#enemy-box" + enemyAttacks;
   var tempBox = $(tempBox1);
-  
-  $('#enemyFireButton').off('click', enemyFire);
-  $('.box').on('click', checkHit);
+
   $('#player1name').css('text-shadow', '0 0 10px white');
   $('#player2name').css('text-shadow', 'none');
-
+  $('#enemyFireButton').removeClass('beforeShot');
+  $('#enemyFireButton').addClass('afterShot');
   if (userBoard[a][b] != null) {
     tempBox.css('backgroundColor', 'rgba(109,20,20,0.73)');
-    user.ships--;
+    playerPointId = '#playerPoint-'+user.ships;
+    console.log(playerPointId);
+    $(playerPointId).css("background", "url()");
     $('#userResult').html("HIT");
+    user.ships--;
     enemyHit.play();
-    $('#player1name').html(user.name + " (" + user.ships + " ships left...)");
     checkWin();
   } else {
-    $('#player1name').html(user.name + " (" + user.ships + " ships left...)");
     enemyMiss.play();
     tempBox.css('backgroundColor', 'rgba(0,0,0,0)');  
     $('#userResult').html("MISS");
   }
+  setTimeout( function() { 
+    $('#enemyFireButton').removeClass('afterShot');
+    $('#enemyFireButton').addClass('beforeShot');
+    $('.box').on('click', checkHit);
+  }, 2500);
 }
 
 function submitName() {
   event.preventDefault();
   var player1name = $('#player-input').val();
   user.name = player1name;
-  enemy.name = "Blackbeard"; 
-  $('#player1name').html(user.name + " (" + user.ships + " ships left...)");
-  $('#player2name').html("Blackbeard (" + enemy.ships + " ships left...)");
+  enemy.name = "Blackbeard";
+  $('#player1name').html(player1name)
   $('#player1name').css('text-shadow', '0 0 10px white');
   loadMusic.pause();
   battleMusic.play();
@@ -182,13 +198,11 @@ function submitName() {
 function checkWin() {
   if (enemy.ships === 0) {
     $('#nameTitle').html(user.name + " wins!")
-    $('#enemyFireButton').off('click', enemyFire);
     $('.box').off('click', checkHit);
     battleMusic.pause();
     youWin.play();
   } else if (user.ships === 0) {
     $('#nameTitle').html(user.name + " loses...")
-    $('#enemyFireButton').off('click', enemyFire);
     $('.box').off('click', checkHit);
     battleMusic.pause();
     youLose.play();

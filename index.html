@@ -21,7 +21,9 @@
                     <h1 id="nameTitle">PirateSHIPS</h1>
                 </div>
                 <div id="top-right-corner" class="col-md-1">
-                    <button id="enemyFireButton">Enemy Fire</button>    
+                    <div id="enemyFireButton" class="beforeShot">
+                        <p>Enemy Fire</p>
+                    </div>
                 </div>
             </div>
 
@@ -39,8 +41,14 @@
                     </div>
                     <div id="scoreBoard" class="row">
                        <div id="player-row">
-                            <h3 id="player1name">Player: </h3>
-                            <h3 id="player2name">Blackbeard: </h3>
+                       <div class="col-md-6">
+                            <h3 id="player1name" class="name-header"></h3>
+                            <div id="player-score"></div>
+                       </div>
+                       <div class="col-md-6">
+                            <h3 id="player2name" class="name-header">Blackbeard</h3>
+                            <p id="enemy-score"></p>
+                       </div>
                         </div>
                     </div>
                 </div>
@@ -49,9 +57,6 @@
                         <div id="pre-game-image">
                         </div>
                     </div>
-
-
-
                     <div id="enemyGameBoard" class="row">
                     </div>
                 </div>
@@ -85,7 +90,6 @@
                             <strong>in Davy Jones' Locker...</strong></p>
                         </li>
                     </ul>
-
 
                     </div>
                    <div class="modal-footer">

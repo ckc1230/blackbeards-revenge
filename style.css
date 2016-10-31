@@ -74,12 +74,30 @@ button:focus {outline:0;}
 }
 
 #top-right-corner {
-    background-color: rgba(33,101,28,0.62);
-    height: 100px;
-    border: 10px solid black;
-    padding: 0px;
+  background-color: rgba(33,101,28,0.62);
+  height: 100px;
+  border: 10px solid black;
+  padding: 0px;
+  font-size: 16px;
+  color: whitesmoke;
+  font-weight: 600;
+  text-align: center;
 }
 
+.beforeShot {
+  padding-top: 11px;
+  vertical-align: text-bottom;
+  border: 5px solid whitesmoke;
+  background-color: rgba(33,101,28,0.62);
+  height: 80px;
+}
+
+.afterShot {
+  box-shadow:0px 0px 0px 10px red inset;
+  padding-top: 16px;
+  border: 0;
+  height: 80px;
+}
 
 #left-column {
     background-color: rgba(109,20,20,0.73);
@@ -108,25 +126,12 @@ button:focus {outline:0;}
   padding: 0 0 5px 0;
 }
 
-#player1name {
-  margin-bottom: 0;
-  margin-top: 0;
-  margin-left: 15px;
-  width: 350px;
-  display: inline-block;
-}
-
 #scoreHeader {
   text-align: center;
   background-color: grey;
   margin: 0;
   height: 35px;
   padding: 3px;
-}
-
-#player2name {
-  margin: 0 0 0 15px;
-  display: inline-block;
 }
 
 #name-form {
@@ -180,16 +185,25 @@ button:focus {outline:0;}
 #pre-game-button {
   height: 45px;
 }
-#enemyFireButton {
-  background-color: rgba(33,101,28,0.62);
-  font-size: 16px;
-  height: 80px;
-  color: whitesmoke;
-  font-weight: 600;
-  border: 5px solid whitesmoke;
+
+.playerPoint {
+  background: url(images/Player_ship.png);
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  display: inline-block
+}
+.enemyPoint {
+  background: url(images/Pirate_Ship.png);
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  display: inline-block
 }
 
-#enemyFireButton:hover {
-  box-shadow:0px 0px 0px 10px red inset;
-  border: 0;
+.name-header {
+  margin-top: 5px;
+  text-align: center;
+  margin-bottom: 2px;
+  text-decoration: underline;
 }
