@@ -19,22 +19,6 @@ button:focus {outline:0;}
 
 #myModal {
   top: 15%;
-
-}
-
-.userHit {
-}
-
-.tabButton {
-  width: 145px;
-  border: 5px solid black;
-  margin: 0px;
-  padding: 0px;
-  height: 30px;
-  font-size: 15px;
-  color: azure;
-  font-weight: bold;
-  background-color: rgba(100,200,200,0.5);
 }
 
 #scoreBoard {
@@ -151,16 +135,8 @@ button:focus {outline:0;}
   padding: 7px 0px 0px 10px;
 }
 
-#user-column {
-  transform: rotate(90deg);
-}
-
 .enemy-row {
   margin: 0 auto !important;
-}
-
-#firstRow {
-  padding-top: 8px;
 }
 
 .box {
@@ -172,6 +148,7 @@ button:focus {outline:0;}
   display: inline-block;
   border-radius: 7px;
 }
+
 .enemy-box {
   width: 8%;
   height: 19px;
@@ -196,6 +173,7 @@ button:focus {outline:0;}
   width: 30px;
   display: inline-block
 }
+
 .enemyPoint {
   background: url(images/Pirate_Ship.png);
   background-size: cover;

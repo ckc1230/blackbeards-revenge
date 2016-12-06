@@ -48,6 +48,9 @@ var youLose = new Audio('music/youLose.mp3');
 var dualShot = true;
 var firstDualShot = true;
 var enemyChoiceArray = [];
+var choice; // Enemy's Attack Coordinates
+var a;      // Enemy's First Coordinate
+var b;      // Enemy's Second Coordinate
 
 //Gameplay Event Listeners
 $('#name-form').on("submit", submitName);
@@ -131,7 +134,6 @@ function createEnemyChoices() {
 function checkHit() {
   var tempBox = $(this).attr('id');
   var boxNumber = tempBox[3]+tempBox[4];
-
   var x = boxNumber[0];
   var y = boxNumber[1];
   $('.box').off('click', checkHit);
@@ -150,7 +152,7 @@ function checkHit() {
   } else {
     $(this).css('backgroundColor', 'rgba(0,0,0,0)');  
     $(this).css('box-shadow', '0px 0px 0px 5px black inset');
-    $('#userHitResult').attr('src', 'images/miss.png');
+    $('#userHitResult').attr('src', 'images/begin.png');
     fireMiss.play();
   }
   setTimeout(enemyFire, 3700);
@@ -187,9 +189,7 @@ function enemyFire() {
 }
 
 function enemyShot() {
-  var choice;
-  var a;
-  var b;
+
   randomNumber = Math.floor(Math.random()*enemyChoiceArray.length);
   choice = enemyChoiceArray[randomNumber];
   choice = ("0" + choice).slice(-2).toString();
@@ -202,14 +202,12 @@ function enemyShot() {
     tempBox.css('backgroundColor', 'rgba(109,20,20,0.73)');
     playerPointId = '#playerPoint-'+user.ships;
     $(playerPointId).css("background", "url()");
-    $('#userResult').html("HIT");
     user.ships--;
     enemyHit.play();
     checkWin();
   } else {
     enemyMiss.play();
     tempBox.css('backgroundColor', 'rgba(0,0,0,0)');  
-    $('#userResult').html("MISS");
   }
 }
 
