@@ -3,44 +3,44 @@ body {
   background-size: cover;
 }
 
+button:focus {outline:0;}
+
 #nameTitle {
-  color: red;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: black;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
   text-align: center;
   font-size: 3em;
-  margin: 0;
+  vertical-align: middle;
 }
 
-h2 {
-  text-align: center;
-  height: 50%;
-  font-size: 35px;
-  padding-top: 5px;
-  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+#modal-title {
+  padding-left: 25px;
 }
-.tabButton {
-    width: 145px;
-    border: 5px solid black;
-    margin: 0px;
-    padding: 0px;
-    height: 30px;
-    font-size: 15px;
-    color: azure;
-    font-weight: bold;
-    background-color: rgba(100,200,200,0.5);
-}
-#rulesButton {
-float: left;}
 
-#rules {
-  margin-top: 5px; 
+#myModal {
+  top: 15%;
+}
+
+#scoreBoard {
   text-align: left;
-  padding-left: 10px;
   font-weight: 900;
+  height: 250px;
   color: azure;
 }
+
+#pre-game-board {
+  height: 280px;
+}
+
+#pre-game-image {
+  background: url(images/skull.png);
+  height: 230px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .rightDiv {
-  width: 290px;
   height: 285px;
   border: 5px 0 0 0 solid black;
 }
@@ -50,65 +50,68 @@ float: left;}
   height: 275px;
 }
 
-button:focus {outline:0;}
-
-
 #top-left-corner {
-    background-color: rgba(33,101,28,0.62);
-    width: 100px;
-    height: 100px;
-    border: 10px solid black;
-    display: inline-block;
-    float: left;
-    margin-left: 95px;
+  background-color: rgba(33,101,28,0.62);
+  padding: 0;
+  height: 100px;
+  border: 10px solid black;
+}
+
+#userHitResult {
+  height: 80px;
+}
+
+#top-mid {
+  height: 100px;
+  background: rgba(144,144,34,0.78);
+  border: 10px solid black;
 }
 
 #top-right-corner {
-    background-color: rgba(33,101,28,0.62);
-    width: 100px;
-    height: 100px;
-    border: 10px solid black;
-    display: inline-block;
-    float: left;
+  background-color: rgba(33,101,28,0.62);
+  height: 100px;
+  border: 10px solid black;
+  padding: 0px;
+  font-size: 16px;
+  color: whitesmoke;
+  font-weight: 600;
+  text-align: center;
 }
 
+.beforeShot {
+  padding-top: 11px;
+  vertical-align: text-bottom;
+  border: 5px solid whitesmoke;
+  background-color: rgba(33,101,28,0.62);
+  height: 80px;
+}
+
+.afterShot {
+  box-shadow:0px 0px 0px 10px red inset;
+  padding-top: 16px;
+  border: 0;
+  height: 80px;
+}
 
 #left-column {
     background-color: rgba(109,20,20,0.73);
-    width: 100px;
     height: 570px;
     border: 10px solid black;
-    display: inline-block;
-    float: left;
+}
+
+#gameBoard {
+  height: 570px;
+  background: rgba(20,62,95,0.73);
+  border: 10px solid black;
 }
 
 #right-column {
     background-color: rgba(109,20,20,0.73);
-    width: 290px;
     height: 570px;
     border: 10px solid black;
-    display: inline-block;
-    float: right;
-}
-
-#top-section {
-    margin: 0 auto;
-    width: 1190px;
-    height: 100px;
-}
-
-#top-mid {
-  margin: 0 auto;
-  width: 740px;
-  height: 100px;
-  background: rgba(144,144,34,0.78);
-  border: 10px solid black;
-  float: left;
 }
 
 #bottom-section {
-    margin: 0 auto;
-    width: 1000px;
     height: 570px;
 }
 
@@ -117,82 +120,40 @@ button:focus {outline:0;}
   padding: 0 0 5px 0;
 }
 
-#player1name {
-  margin-bottom: 0;
-  margin-top: 0;
-  margin-left: 15px;
-  width: 350px;
-  display: inline-block;
-}
-
-#rulesHeader {
+#scoreHeader {
   text-align: center;
   background-color: grey;
   margin: 0;
-  height: 30px;
-  vertical-align: middle;
-  padding-top: 8px;
-}
-
-#player2name {
-  margin: 0 0 0 15px;
-  display: inline-block;
-}
-
-#name-form {
-  display: inline-block;
-  padding-right: 170px;
-      width: 390px;
-}
-
-#opponent-form {
-  display: inline-block;
-  visibility: hidden;
-}
-
-#gameBoard {
-  width: 550px;
-  height: 570px;
-  background: rgba(20,62,95,0.73);
-  border: 10px solid black;
-  display: inline-block;
+  height: 35px;
+  padding: 3px;
 }
 
 #enemyGameBoard {
-  width: 290px;
-  height: 285px;
+  height: 270px;
   background: rgba(20,62,95,0.73);
-/*  border: 10px solid black;
-*/  display: inline-block;
+  border-top: 10px solid black;
+  padding: 7px 0px 0px 10px;
 }
 
-#user-column {
-  transform: rotate(90deg);
-}
-
-.row {
-
-  padding: 3px 0 0 7px;
-}
-
-#firstRow {
-  padding-top: 8px;
+.enemy-row {
+  margin: 0 auto !important;
 }
 
 .box {
-  width: 9%;
+  width: 8%;
   height: 48px;
-  margin: 0px;
+  margin: 2px 0px 0px 10px;
   padding: 0.5px;
   background-color: grey;
   display: inline-block;
   border-radius: 7px;
 }
+
 .enemy-box {
   width: 8%;
   height: 19px;
-  margin: 0px;
-  padding: 0.5px;
+  margin: 1px 0px 0px 5px;
+  padding: 2px;
   background-color: grey;
   display: inline-block;
   border-radius: 7px;
@@ -201,19 +162,29 @@ button:focus {outline:0;}
   box-shadow:0px 0px 0px 5px yellow inset;
 }
 
-#enemyFireButton {
-    background-color: rgba(33,101,28,0.62);
-    padding: 10px;
-    font-size: 20px;
-    height: 100px;
-    width: 100px;
-    color: whitesmoke;
-    font-weight: 700;
-    border: 5px solid whitesmoke;
+#pre-game-button {
+  height: 45px;
 }
 
-#enemyFireButton:hover {
-  box-shadow:0px 0px 0px 10px red inset;
-  border: 0;
+.playerPoint {
+  background: url(images/Player_ship.png);
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  display: inline-block
+}
 
+.enemyPoint {
+  background: url(images/Pirate_Ship.png);
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  display: inline-block
+}
+
+.name-header {
+  margin-top: 5px;
+  text-align: center;
+  margin-bottom: 2px;
+  text-decoration: underline;
 }
